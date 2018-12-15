@@ -95,7 +95,7 @@
           var legs = determine_legs(calendar_entries);
 
           $.ajax({
-              url: "../intrl_kombinierer/reiseoptions_receiver.php",
+              url: "http://localhost:8000/intrl_kombinierer/reiseoptions_receiver.php",
               method: "GET",
               dataType: "JSON",
               data: {legs: legs}
