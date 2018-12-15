@@ -1,7 +1,7 @@
 function determine_legs(calendar_entries) {
-    var legs = new Array();
+    var legs = [];
     for(i = 0; i < calendar_entries.length; i++){
-        if(i == 0){
+        if(i === 0){
             legs.push({
                 'legId' : i,
                 'origin' : generateLocationDetails("Holzkirchen", "2018-12-17T08:00:00+01:00", ""),

@@ -75,7 +75,7 @@
           var events = response.result.items;
           appendPre('Upcoming events:');
 
-          var calendar_entries = new Array();
+          var calendar_entries = [];
           $.each(events, function(){
               if(this.start.dateTime && this.end.dateTime && this.location) {
                   var event = {
@@ -93,6 +93,16 @@
           });
 
           var legs = determine_legs(calendar_entries);
+
+          $.ajax({
+              url: "../intrl_kombinierer/reiseoptions_receiver.php",
+              method: "GET",
+              dataType: "JSON",
+              data: {legs: legs}
+          })
+              .done(function(result){
+                  alert(result);
+              })
 
 
           if (events.length > 0) {
