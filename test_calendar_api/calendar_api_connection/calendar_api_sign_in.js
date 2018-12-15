@@ -92,15 +92,7 @@
               }
           });
 
-          $.ajax({
-              url: "",
-              method: "get",
-              data: {calendar_entries: calendar_entries},
-              dataType: "JSON"
-          })
-              .done(function(result){
-                  alert(result);
-              })
+          var legs = determine_legs(calendar_entries);
 
 
           if (events.length > 0) {
