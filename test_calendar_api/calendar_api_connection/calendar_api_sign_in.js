@@ -75,6 +75,34 @@
           var events = response.result.items;
           appendPre('Upcoming events:');
 
+          var calendar_entries = new Array();
+          $.each(events, function(){
+              if(this.start.dateTime && this.end.dateTime && this.location) {
+                  var event = {
+                      'id': this.id,
+                      'name': this.summary,
+                      'startDateTime': this.start.dateTime,
+                      'endDateTime': this.end.dateTime,
+                      'location': this.location,
+                      'status': this.status,
+                      'created': this.created,
+                      'updated': this.updated
+                  };
+                  calendar_entries.push(event);
+              }
+          });
+
+          $.ajax({
+              url: "",
+              method: "get",
+              data: {calendar_entries: calendar_entries},
+              dataType: "JSON"
+          })
+              .done(function(result){
+                  alert(result);
+              })
+
+
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
               var event = events[i];
