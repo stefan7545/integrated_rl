@@ -82,7 +82,12 @@
               if (!when) {
                 when = event.start.date;
               }
-              appendPre(event.summary + ' (' + when + ')')
+              var where = events[i].location;
+              if (where) {
+                 appendPre(event.summary + ' (Zeitpunkt: ' + when + ', Ort: ' + where +')');
+              } else {
+                  appendPre("No Location given for: " + event.summary);
+              }
             }
           } else {
             appendPre('No upcoming events found.');
